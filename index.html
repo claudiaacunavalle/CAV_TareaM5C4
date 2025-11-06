@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exchange Rate — USD → MXN</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <div class="container" role="main">
+      <header>
+        <div>
+          <div class="title">Exchange Rate— USD → MXN</div>
+          <div class="subtitle">Análisis de tendencias, estacionalidad y volatilidad (archivo:           <code>ExchangeRateHistorical.csv</code>)</div>
+        </div>
+      </header>
+
+    <div class="grid">
+      <!-- LEFT: charts -->
+      <div>
+        <section class="card">
+          <div class="chart-title">Tendencia a largo plazo — Línea con zoom y brush</div>
+          <div class="controls">
+            <label>Rango: </label>
+            <select id="range-select">
+              <option value="all">Todo</option>
+              <option value="10y">Últimos 10 años</option>
+              <option value="5y">Últimos 5 años</option>
+              <option value="1y">Último año</option>
+            </select>
+            <button id="reset-btn">Resetear</button>
+            <div class="muted">Datos cargados: <span id="count">—</span></div>
+         </div>
+         <div id="trend-chart" class="chart"></div>
+        </section>
+
+
+        <section class="card">
+          <div class="chart-title">Volatilidad (desviación estándar móvil)</div>
+          <div id="volatility-chart" class="small-chart"></div>
+        </section>
+
+
+        <section class="card">
+         <div class="chart-title">Estacionalidad — Promedio por mes</div>
+         <div id="seasonality-chart" class="chart"></div>
+        </section>
+      </div>
+
+
+      <!-- RIGHT: sidebar -->
+      <aside class="right-col">
+       <div class="card">
+       <div class="chart-title">Resumen</div>
+         <div><strong>Media:</strong> <span id="mean">—</span></div>
+         <div><strong>Mediana:</strong> <span id="median">—</span></div>
+         <div><strong>Std (global):</strong> <span id="std">—</span></div>
+         <div><strong>Periodo:</strong> <span id="period">—</span></div>
+      </div>
+
+
+        <div class="card">
+           <div class="chart-title">Controles</div>
+             <label>Ventana (días)</label>
+             <input id="rolling-window" type="number" value="30" />
+             <button id="apply-rolling">Aplicar</button> 
+           </div>
+          </aside>
+        </div>
+
+
+      <footer>Tarea M5 clase 4</footer>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
